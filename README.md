@@ -21,7 +21,7 @@ The system follows a modular architecture built around three main layers:
 - **Conversational interface** — A Telegram bot allows users to query monitoring data using natural language. A rule-based parser handles most queries, while a local LLM running through Ollama acts as a semantic fallback for less structured requests.
 
 <p align="center">
-  <img src="docs/architecture.png" alt="System architecture" width="900"/>
+  <img src="docs/architecture.png" alt="System architecture" width="700"/>
 </p>
 
 ## Tech Stack 🛠️
@@ -51,3 +51,9 @@ The assistant follows a hybrid interpretation approach:
 4. The result is formatted into a readable response and returned through Telegram.
 
 The assistant also keeps conversational context, allowing follow-up queries without repeating all the previous information.
+
+## Demo 🎥
+
+[![IoT Network Monitoring System Demo](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+
+▶️ [Watch the full demo](https://www.youtube.com/watch?v=VIDEO_ID)
