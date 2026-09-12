@@ -14,7 +14,7 @@ The system is organized around three main areas:
 
 ## Architecture 🏗️
 
-The system follows a modular architecture built around three main layers:
+The architecture connects data collection, storage, visualization and user interaction into a single monitoring workflow.
 
 - **Monitoring backend** — Pi-hole collects DNS activity, a Python collector processes DNS metrics, and Telegraf gathers system metrics from the monitored hosts. All metrics are stored in InfluxDB as time-series data.
 - **Visualization layer** — Grafana queries InfluxDB to provide dashboards for DNS activity and system health, while also generating alerts when relevant thresholds are exceeded.
