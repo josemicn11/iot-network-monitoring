@@ -1,5 +1,7 @@
 # IoT Network Monitoring System 📡
 
+Docker-based IoT network monitoring system developed as my Final Degree Project in Telecommunications Engineering.
+
 ## Architecture 🏗️
 
 The system is built around a Raspberry Pi that acts as the main monitoring node and integrates data collection, storage, visualization, alerting and natural-language interaction.
