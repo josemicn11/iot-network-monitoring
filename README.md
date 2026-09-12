@@ -20,11 +20,6 @@ The system follows a modular architecture built around three main layers:
 - **Visualization layer** — Grafana queries InfluxDB to provide dashboards for DNS activity and system health, while also generating alerts when relevant thresholds are exceeded.
 - **Conversational interface** — A Telegram bot allows users to query monitoring data using natural language. A rule-based parser handles most queries, while a local LLM running through Ollama acts as a semantic fallback for less structured requests.
 
-The architecture separates DNS metrics and system metrics into two InfluxDB buckets:
-
-- `pihole_metrics`
-- `system_metrics`
-
-- <p align="center">
+<p align="center">
   <img src="docs/architecture.png" alt="System architecture" width="900"/>
 </p>
