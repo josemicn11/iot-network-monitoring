@@ -11,3 +11,20 @@ The system is organized around three main areas:
 - **Monitoring backend** — collection and processing of DNS and system metrics
 - **Visualization layer** — Grafana dashboards and automated alerts
 - **Conversational interface** — Telegram assistant for querying monitoring data using natural language
+
+## Architecture 🏗️
+
+The system follows a modular architecture built around three main layers:
+
+- **Monitoring backend** — Pi-hole collects DNS activity, a Python collector processes DNS metrics, and Telegraf gathers system metrics from the monitored hosts. All metrics are stored in InfluxDB as time-series data.
+- **Visualization layer** — Grafana queries InfluxDB to provide dashboards for DNS activity and system health, while also generating alerts when relevant thresholds are exceeded.
+- **Conversational interface** — A Telegram bot allows users to query monitoring data using natural language. A rule-based parser handles most queries, while a local LLM running through Ollama acts as a semantic fallback for less structured requests.
+
+The architecture separates DNS metrics and system metrics into two InfluxDB buckets:
+
+- `pihole_metrics`
+- `system_metrics`
+
+- <p align="center">
+  <img src="docs/architecture.png" alt="System architecture" width="900"/>
+</p>
