@@ -38,3 +38,16 @@ The system follows a modular architecture built around three main layers:
 - Natural-language queries through Telegram
 - Context-aware follow-up queries
 - Local LLM fallback for less structured requests
+
+## Conversational Assistant 🤖
+
+The project includes a Telegram-based assistant that allows users to query monitoring data using natural language.
+
+The assistant follows a hybrid interpretation approach:
+
+1. A **rule-based parser** first tries to identify the user intent and extract parameters such as the host, time range, domain or query type.
+2. If the query cannot be interpreted reliably, a **local LLM running through Ollama** is used as a semantic fallback.
+3. The requested metrics are retrieved from **InfluxDB**.
+4. The result is formatted into a readable response and returned through Telegram.
+
+The assistant also keeps conversational context, allowing follow-up queries without repeating all the previous information.
