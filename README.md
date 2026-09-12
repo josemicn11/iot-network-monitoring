@@ -21,7 +21,7 @@ The system follows a modular architecture built around three main layers:
 - **Conversational interface** — A Telegram bot allows users to query monitoring data using natural language. A rule-based parser handles most queries, while a local LLM running through Ollama acts as a semantic fallback for less structured requests.
 
 <p align="center">
-  <img src="docs/architecture.png" alt="System architecture" width="700"/>
+  <img src="docs/architecture.png" alt="System architecture" width="750"/>
 </p>
 
 ## Tech Stack 🛠️
