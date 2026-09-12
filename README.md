@@ -23,3 +23,18 @@ The system follows a modular architecture built around three main layers:
 <p align="center">
   <img src="docs/architecture.png" alt="System architecture" width="900"/>
 </p>
+
+## Tech Stack 🛠️
+
+`Python` `Docker` `Docker Compose` `Pi-hole` `Telegraf` `InfluxDB` `Grafana` `Telegram` `Ollama`
+
+## Features ⚙️
+
+- DNS traffic monitoring
+- System metrics monitoring
+- Time-series data storage
+- Grafana dashboards
+- Automated alerts
+- Natural-language queries through Telegram
+- Context-aware follow-up queries
+- Local LLM fallback for less structured requests
