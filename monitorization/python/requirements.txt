@@ -1,0 +1,4 @@
+# Python dependencies for the monitoring API
+
+influxdb-client
+requests

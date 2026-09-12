@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+log.txt
+log_api.txt
+
+# Temporary/runtime files
+*.tmp
+*.pid
+last_timestamp.txt
+
+# InfluxDB persistent data
+monitorizacion/influx2/
+
+# Grafana persistent data
+monitorizacion/grafana/storage/
+
+# IDE files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db

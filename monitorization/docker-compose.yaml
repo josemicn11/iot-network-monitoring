@@ -1,0 +1,59 @@
+services:
+  grafana:
+    image: grafana/grafana-enterprise:12.1.1
+    container_name: grafana_monitor
+    restart: unless-stopped
+    depends_on:
+      - timedb2
+    ports:
+      - "3300:3000"
+    volumes:
+      - "./grafana/storage:/var/lib/grafana"
+    environment:
+      - GF_SMTP_ENABLED=true
+      - GF_SMTP_HOST=smtp.gmail.com:587
+      - GF_SMTP_USER=${GF_SMTP_USER}
+      - GF_SMTP_PASSWORD=${GF_SMTP_PASSWORD}
+      - GF_SMTP_FROM_ADDRESS=${GF_SMTP_FROM_ADDRESS}
+      - GF_SMTP_FROM_NAME=Grafana Alert
+      - GF_SMTP_SKIP_VERIFY=true
+    networks:
+      web_net:
+        ipv4_address: 172.24.10.10
+
+  timedb2:
+    image: influxdb:2.7.6-alpine
+    container_name: timelog2
+    restart: unless-stopped
+    ports:
+      - "3302:8086"
+    volumes:
+      - "./influx2/data:/var/lib/influxdb2"
+      - "./influx2/config:/etc/influxdb2"
+    networks:
+      web_net:
+        ipv4_address: 172.24.10.22
+
+  telegraf:
+    image: telegraf:1.30-alpine
+    container_name: telegraf_tfg
+    restart: unless-stopped
+    pid: "host"
+    privileged: true
+    user: "0:0"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - "./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+    environment:
+      - INFLUX_URL=http://timedb2:8086
+      - INFLUX_TOKEN=${INFLUX_TOKEN}
+      - INFLUX_ORG=${INFLUX_ORG}
+      - INFLUX_BUCKET=${SYSTEM_INFLUX_BUCKET}
+    networks:
+      web_net:
+
+networks:
+  web_net:
+    name: monitoring_apps
+    external: true
