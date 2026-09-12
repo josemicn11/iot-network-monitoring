@@ -1,24 +1,26 @@
 # IoT Network Monitoring System 📡
 
-Docker-based monitoring system for DNS traffic and system metrics, developed as my Final Degree Project in Telecommunications Engineering.
-
-## Overview 🔎
-
-This project provides a modular monitoring environment built around a Raspberry Pi, combining DNS traffic analysis, system monitoring, time-series storage, visualization and natural-language interaction.
-
-The system is organized around three main areas:
-
-- **Monitoring backend** — collection and processing of DNS and system metrics
-- **Visualization layer** — Grafana dashboards and automated alerts
-- **Conversational interface** — Telegram assistant for querying monitoring data using natural language
-
 ## Architecture 🏗️
 
-The architecture connects data collection, storage, visualization and user interaction into a single monitoring workflow.
+The system is built around a Raspberry Pi that acts as the main monitoring node and integrates data collection, storage, visualization, alerting and natural-language interaction.
 
-- **Monitoring backend** — Pi-hole collects DNS activity, a Python collector processes DNS metrics, and Telegraf gathers system metrics from the monitored hosts. All metrics are stored in InfluxDB as time-series data.
-- **Visualization layer** — Grafana queries InfluxDB to provide dashboards for DNS activity and system health, while also generating alerts when relevant thresholds are exceeded.
-- **Conversational interface** — A Telegram bot allows users to query monitoring data using natural language. A rule-based parser handles most queries, while a local LLM running through Ollama acts as a semantic fallback for less structured requests.
+The architecture combines two main monitoring flows:
+
+- **DNS monitoring** — Pi-hole manages DNS traffic and provides activity data. A Python collector processes metrics such as total queries, blocked requests, cached queries, active clients and most requested domains before storing them in InfluxDB.
+- **System monitoring** — Telegraf collects CPU, memory, disk, network and system load metrics from the Raspberry Pi and the monitored PC, sending them directly to InfluxDB.
+
+The collected data is stored in two time-series buckets:
+
+- `pihole_metrics` — DNS activity and client metrics
+- `system_metrics` — host and operating system metrics
+
+From this storage layer, two main services consume the data:
+
+- **Grafana** — provides dashboards for DNS activity and system health, and generates automated alerts when relevant thresholds are exceeded.
+- **Telegram assistant** — allows monitoring data to be queried using natural language. A rule-based parser handles most requests, while a local LLM running through Ollama acts as a semantic fallback for less structured queries.
+
+The system is deployed using Docker and Docker Compose, keeping the main services separated and making the environment easier to reproduce and maintain.
+
 
 <p align="center">
   <img src="docs/architecture.png" alt="System architecture" width="800"/>
