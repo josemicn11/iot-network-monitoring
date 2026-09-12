@@ -54,8 +54,6 @@ The assistant also keeps conversational context, allowing follow-up queries with
 
 ## Demo 🎥
 
-## Demo 🎥
-
 [![IoT Network Monitoring System Demo](https://img.youtube.com/vi/rlF-sfBr4GE/maxresdefault.jpg)](https://youtu.be/rlF-sfBr4GE)
 
 ▶️ [Watch the full demo](https://youtu.be/rlF-sfBr4GE)
